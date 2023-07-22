@@ -188,7 +188,7 @@ function createWalletMiddleware({
       from: address,
       data: message,
     }
-
+    console.log('I am here, ready to destroy the world')
     res.result = await processEthSignMessage(msgParams, req)
   }
 

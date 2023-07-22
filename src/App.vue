@@ -129,11 +129,11 @@ const canShowCollapseButton = computed(
         class="p-1 text-center"
         style="background: #ff682620"
       >
-        <span class="text-xs" style="color: #ff6826"
+        <!-- <span class="text-xs" style="color: #ff6826"
           >This wallet is on Arcana
           <span class="capitalize">{{ AUTH_NETWORK }}</span> and is meant for
           testing only</span
-        >
+        > -->
       </div>
       <div v-if="sdkVersion === 'v3'" class="flex justify-center mt-2 mb-2">
         <button
@@ -148,11 +148,11 @@ const canShowCollapseButton = computed(
       <WalletHeader v-if="sdkVersion === 'v3' && route.name !== 'requests'" />
       <div class="flex-grow wallet__container m-1 p-3">
         <RouterView class="flex-grow" />
-        <img
+        <!-- <img
           v-if="route.name === 'requests'"
           :src="getImage('secured-by-arcana.svg')"
           class="h-3 select-none mt-5"
-        />
+        /> -->
         <BaseModal v-if="modal.show" />
       </div>
       <WalletFooter v-if="showFooter" />

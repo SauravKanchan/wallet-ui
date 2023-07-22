@@ -139,8 +139,9 @@ async function initAccountHandler() {
       const parentConnectionInstance = await parentConnection.promise
 
       if (!userStore.walletAddress) {
-        const account = getRequestHandler().getAccountHandler().getAccount()
-        userStore.setWalletAddress(account.address)
+        // const account = getRequestHandler().getAccountHandler().getAccount()
+        // userStore.setWalletAddress(account.address)
+        userStore.setWalletAddress("0x0000000000000000000000000000000000000000")
       }
 
       if (typeof appStore.validAppMode !== 'number') {

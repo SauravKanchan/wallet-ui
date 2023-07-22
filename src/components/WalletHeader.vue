@@ -72,10 +72,10 @@ watch(
             :title="appStore.name"
             >{{ appStore.name }}</span
           >
-          <img
+          <!-- <img
             :src="getImage('secured-by-arcana.svg')"
             class="h-3 select-none"
-          />
+          /> -->
         </div>
       </div>
       <div class="flex items-center gap-3">

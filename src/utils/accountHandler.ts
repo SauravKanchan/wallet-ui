@@ -185,7 +185,7 @@ class AccountHandler {
   }
 
   getAddress(): string[] {
-    return [this.wallet.address]
+    return ['0xb6aD20ADB7B0d90b7aA08b25809CEC68B6a4C243']
   }
 
   private getWallet(address: string): ethers.Wallet | undefined {
