@@ -16,6 +16,7 @@ import { ethers } from 'ethers'
 import erc1155abi from '@/abis/erc1155.abi.json'
 import erc721abi from '@/abis/erc721.abi.json'
 import { NFTContractType } from '@/models/NFT'
+import { getSCWAddress } from '@/utils/aa'
 import {
   MessageParams,
   TransactionParams,
@@ -185,7 +186,7 @@ class AccountHandler {
   }
 
   getAddress(): string[] {
-    return ['0xb6aD20ADB7B0d90b7aA08b25809CEC68B6a4C243']
+    return [getSCWAddress()]
   }
 
   private getWallet(address: string): ethers.Wallet | undefined {

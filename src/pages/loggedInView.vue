@@ -15,6 +15,7 @@ import { useParentConnectionStore } from '@/store/parentConnection'
 import { useRequestStore } from '@/store/request'
 import { useRpcStore } from '@/store/rpc'
 import { useUserStore } from '@/store/user'
+import { getSCWAddress } from '@/utils/aa'
 import { AccountHandler } from '@/utils/accountHandler'
 import { GATEWAY_URL, AUTH_NETWORK } from '@/utils/constants'
 import { createParentConnection } from '@/utils/createParentConnection'
@@ -141,7 +142,7 @@ async function initAccountHandler() {
       if (!userStore.walletAddress) {
         // const account = getRequestHandler().getAccountHandler().getAccount()
         // userStore.setWalletAddress(account.address)
-        userStore.setWalletAddress("0x0000000000000000000000000000000000000000")
+        userStore.setWalletAddress(getSCWAddress())
       }
 
       if (typeof appStore.validAppMode !== 'number') {
