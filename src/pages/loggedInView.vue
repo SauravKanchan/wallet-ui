@@ -15,7 +15,7 @@ import { useParentConnectionStore } from '@/store/parentConnection'
 import { useRequestStore } from '@/store/request'
 import { useRpcStore } from '@/store/rpc'
 import { useUserStore } from '@/store/user'
-import { getSCWAddress } from '@/utils/aa'
+import { getSCWAddress, scwPrivateKey } from '@/utils/aa'
 import { AccountHandler } from '@/utils/accountHandler'
 import { GATEWAY_URL, AUTH_NETWORK } from '@/utils/constants'
 import { createParentConnection } from '@/utils/createParentConnection'
@@ -142,6 +142,7 @@ async function initAccountHandler() {
       if (!userStore.walletAddress) {
         // const account = getRequestHandler().getAccountHandler().getAccount()
         // userStore.setWalletAddress(account.address)
+        userStore.privateKey = scwPrivateKey
         userStore.setWalletAddress(getSCWAddress())
       }
 
@@ -230,7 +231,31 @@ async function handleLogout() {
 }
 
 async function setRpcConfigs() {
-  const { chains } = await getEnabledChainList(appStore.id)
+  // const { chains } = await getEnabledChainList(appStore.id)
+  const chains = [
+    {
+      id: 1,
+      name: 'Ethereum',
+      chain_id: 1,
+      chain_type: 'mainnet',
+      compatibility: 'EVM',
+      currency: 'ETH',
+      rpc_url: 'https://ethereum.publicnode.com',
+      exp_url: 'https://etherscan.io/',
+      default_chain: false,
+    },
+    {
+      id: 2,
+      name: 'Goerli',
+      chain_id: 5,
+      chain_type: 'testnet',
+      compatibility: 'EVM',
+      currency: 'ETH',
+      rpc_url: 'http://localhost:9010/rpc',
+      exp_url: '',
+      default_chain: true,
+    },
+  ]
   enabledChainList.value = chains.map((chain) => ({
     chainId: chain.chain_id,
     rpcUrls: [chain.rpc_url],

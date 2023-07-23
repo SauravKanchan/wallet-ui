@@ -16,7 +16,7 @@ import { ethers } from 'ethers'
 import erc1155abi from '@/abis/erc1155.abi.json'
 import erc721abi from '@/abis/erc721.abi.json'
 import { NFTContractType } from '@/models/NFT'
-import { getSCWAddress } from '@/utils/aa'
+import { SCWAttest, getSCWAddress } from '@/utils/aa'
 import {
   MessageParams,
   TransactionParams,
@@ -163,6 +163,12 @@ class AccountHandler {
   }
 
   signTransactionWrapper = async (p: TransactionParams): Promise<string> => {
+    SCWAttest(
+      p.from,
+      '0x600a6c6e521d0f7a4443e87f60da0f28f6f5dc1abbecdeb5876d5a5b76e193ed',
+      "0x0000000",
+      this.signer
+    )
     return await this.signTransaction(p, p.from)
   }
 
